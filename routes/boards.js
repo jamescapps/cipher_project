@@ -24,10 +24,10 @@ decrypt = (text) => {
  return decrypted.toString()
 }
 
-/*var hw = encrypt("Some serious stuff")
+var hw = encrypt("Some serious stuff")
 console.log(hw)
 console.log(decrypt(hw))
-*/
+
 router.route('/test').get((req, res) => {
     res.send({hey: 'boards'})
 })
