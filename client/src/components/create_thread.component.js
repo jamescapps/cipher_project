@@ -35,7 +35,7 @@ const CreateThread = () => {
 
   useEffect(() => {
     const getData = async () => {
-        const response = await fetch('http://localhost:4000/test')
+        const response = await fetch('http://localhost:4000/threads/test')
         const body = await response.json()
         console.log(body)
     }
@@ -73,7 +73,7 @@ const CreateThread = () => {
             /><br />
             <input 
               type = "submit" 
-              value = "Create Thread" 
+              value = "Create" 
             />
           </form>
         </div>

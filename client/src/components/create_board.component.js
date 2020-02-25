@@ -8,6 +8,7 @@ const CreateBoard = () => {
   const [boardName, setBoardName] = useState('')
   const [password1, setPassword1] = useState('')
   const [password2, setPassword2] = useState('')
+  const [message, setMessage] = useState('')
 
   const handleBoardNameChange = (e) => {
     setBoardName(e.target.value)
@@ -23,18 +24,30 @@ const CreateBoard = () => {
 
   const onSubmit =(e) => {
     e.preventDefault()
-    const board = {
-      boardName: boardName,
-      password1: password1,
-      password2: password2
-    }
-    console.log(board)
-    console.log("Submitted")
+    fetch('http://localhost:4000/boards/add', {
+        method: 'POST',
+        headers: {
+            Accept: 'application/json',
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+            boardName: boardName,
+            password1: password1,
+            password2: password2
+        })
+    }).then(function(response) {
+        return response.json()
+    }).then(function(data) {
+        console.log(data)
+        setMessage(data)
+    })
+
+
   }
 
   useEffect(() => {
     const getData = async () => {
-        const response = await fetch('http://localhost:4000/test')
+        const response = await fetch('http://localhost:4000/boards/test')
         const body = await response.json()
         console.log(body)
     }
@@ -75,6 +88,7 @@ const CreateBoard = () => {
               value = "Create" 
             />
           </form>
+          <h3>{message}</h3>
         </div>
       )
 }
