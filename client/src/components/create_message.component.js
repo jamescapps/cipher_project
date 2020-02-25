@@ -1,17 +1,15 @@
 import React, { useState, useEffect } from 'react'
 import '../App.css'
 
-//Create a new board with password.
-//Threads and replies are in code.
 
-const CreateBoard = () => {
-  const [boardName, setBoardName] = useState('')
+const CreateMessage = () => {
+  const [message, setMessage] = useState('')
   const [password1, setPassword1] = useState('')
   const [password2, setPassword2] = useState('')
-  const [message, setMessage] = useState('')
+  const [result, setResult] = useState('')
 
-  const handleBoardNameChange = (e) => {
-    setBoardName(e.target.value)
+  const handleMessageChange = (e) => {
+    setMessage(e.target.value)
   }
 
   const handlePassword1Change = (e) => {
@@ -31,7 +29,7 @@ const CreateBoard = () => {
             'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-            boardName: boardName,
+            message: message,
             password1: password1,
             password2: password2
         })
@@ -39,7 +37,7 @@ const CreateBoard = () => {
         return response.json()
     }).then(function(data) {
         console.log(data)
-        setMessage(data)
+        setResult(data)
     })
 
 
@@ -57,18 +55,18 @@ const CreateBoard = () => {
 
       return (
         <div className = "create">
-        <h1>Create A New Message Board</h1>
+        <h1>Create A New Message</h1>
           <form onSubmit={onSubmit}>
             <input 
-              className = "boardName" 
+              className = "message" 
               type = "text" 
-              name = "boardName" 
-              placeholder = "Name of Board" 
-              onChange={handleBoardNameChange} 
-              value={boardName}
+              name = "message" 
+              placeholder = "Message" 
+              onChange={handleMessageChange} 
+              value={message}
             /><br />
             <input 
-              className = "boardPassword1" 
+              className = "password1" 
               type = "password" 
               name = "password1" 
               placeholder = "Password" 
@@ -76,7 +74,7 @@ const CreateBoard = () => {
               value={password1}
             /><br />
             <input 
-              className = "boardPassword2" 
+              className = "password2" 
               type = "password" 
               name = "password2" 
               placeholder = "Password" 
@@ -88,10 +86,10 @@ const CreateBoard = () => {
               value = "Create" 
             />
           </form>
-          <h3>{message}</h3>
+          <h3>{result}</h3>
         </div>
       )
 }
 
 
-export default CreateBoard
+export default CreateMessage

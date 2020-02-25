@@ -33,15 +33,16 @@ router.route('/test').get((req, res) => {
 })
 
 router.route('/add').post((req, res) => {
-    const { boardName } = req.body
+    const { message } = req.body
     const { password1 } = req.body
     const { password2 } = req.body
 
-    let message = encrypt(boardName)
-    console.log(message)
-    console.log(decrypt(message))
 
-    if (password1 === password2 && password1 !== "" && password2 !== "") { 
+   let encryptedMessage = encrypt(message)
+    console.log(encryptedMessage)
+    console.log(decrypt(encryptedMessage))
+
+    /*if (password1 === password2 && password1 !== "" && password2 !== "") { 
         console.log("Passwords match")
         Board.findOne({board: boardName}, (err, result) => {
             if (!result) {
@@ -67,7 +68,7 @@ router.route('/add').post((req, res) => {
     } else {
         console.log("passwords don't match")
         res.json('Make sure passwords match.')
-    }
+    }*/
 })
 
 module.exports = router

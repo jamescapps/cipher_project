@@ -1,14 +1,14 @@
 import React from 'react'
 
 
-import CreateBoard from './components/create_board.component'
-import CreateThread from './components/create_thread.component'
+import CreateMessage from './components/create_message.component'
+import DecodeMessage from './components/decode_message.component'
 
 const App = () => {
   return (
     <div>
-      <CreateBoard />
-      <CreateThread />
+      <CreateMessage />
+      <DecodeMessage />
     </div>
   )
 }

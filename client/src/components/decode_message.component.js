@@ -4,18 +4,13 @@ import '../App.css'
 //Create a new board with password.
 //Threads and replies are in code.
 
-const CreateThread = () => {
-  const [boardName, setBoardName] = useState('')
-  const [threadName, setThreadName] = useState('')
+const DecodeMessage = () => {
+  const [message, setMessage] = useState('')
   const [password, setPassword] = useState('')
 
 
-  const handleBoardNameChange = (e) => {
-    setBoardName(e.target.value)
-  }
-
-  const handleThreadNameChange = (e) => {
-    setThreadName(e.target.value) 
+  const handleMessageChange = (e) => {
+    setMessage(e.target.value)
   }
 
   const handlePasswordChange= (e) => {
@@ -25,8 +20,7 @@ const CreateThread = () => {
   const onSubmit =(e) => {
     e.preventDefault()
     const thread = {
-      boardName: boardName,
-      threadName: threadName,
+      message: message,
       password: password,
     }
     console.log(thread)
@@ -45,26 +39,18 @@ const CreateThread = () => {
 
       return (
         <div className = "create">
-        <h1>Create A New Thread</h1>
+        <h1>Decode Message</h1>
           <form onSubmit={onSubmit}>
             <input 
-              className = "boardName" 
+              className = "message" 
               type = "text" 
-              name = "boardName" 
-              placeholder = "Name of Board" 
-              onChange={handleBoardNameChange} 
-              value={boardName}
+              name = "message" 
+              placeholder = "Message" 
+              onChange={handleMessageChange} 
+              value={message}
             /><br />
             <input 
-              className = "threadName" 
-              type = "text" 
-              name = "threadName" 
-              placeholder = "Name of thread" 
-              onChange={handleThreadNameChange} 
-              value={threadName}
-            /><br />
-            <input 
-              className = "boardPassword" 
+              className = "password" 
               type = "password" 
               name = "password" 
               placeholder = "Password" 
@@ -73,7 +59,7 @@ const CreateThread = () => {
             /><br />
             <input 
               type = "submit" 
-              value = "Create" 
+              value = "Decode" 
             />
           </form>
         </div>
@@ -81,4 +67,4 @@ const CreateThread = () => {
 }
 
 
-export default CreateThread
+export default DecodeMessage
