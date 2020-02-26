@@ -3,13 +3,11 @@ const bcrypt = require('bcrypt')
 const Message = require('../models/message.model')
 const crypto = require('crypto')
 
-//Need to add self-destruct.
-
-decrypt = (text) => {
-    let iv = Buffer.from(text.iv, 'hex')
-    let encryptedText = Buffer.from(text.encryptedData, 'hex')
-    let decipher = crypto.createDecipheriv('aes-256-cbc', Buffer.from(text.key.buffer), iv)
-    let decrypted = decipher.update(encryptedText)
+decrypt = (input) => {
+    let iv = Buffer.from(input.iv, 'hex')
+    let encryptedInput = Buffer.from(input.encryptedData, 'hex')
+    let decipher = crypto.createDecipheriv('aes-256-cbc', Buffer.from(input.key.buffer), iv)
+    let decrypted = decipher.update(encryptedInput)
     decrypted = Buffer.concat([decrypted, decipher.final()])
     return decrypted.toString()
 }
@@ -27,6 +25,12 @@ router.route('/decode').post((req, res) => {
                     value.encryptedData = result[0].message[0].encryptedData
                     value.key = result[0].message[0].key
                     res.json(decrypt(value))
+                    //Self destruct
+                    Message.remove({'message.encryptedData': message}).then(success => {
+                       if (success) {
+                           console.log('Message was deleted')
+                       }
+                    })
                 }
                 if(!data) {
                     res.json('Incorrect Password')

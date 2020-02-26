@@ -35,7 +35,6 @@ const CreateMessage = () => {
     }).then(function(response) {
         return response.json()
     }).then(function(data) {
-        console.log(data)
         setResult(data)
     })
   }
@@ -51,6 +50,7 @@ const CreateMessage = () => {
               placeholder = "Message" 
               onChange={handleMessageChange} 
               value={message}
+              autocomplete="off"
             /><br />
             <input 
               className = "password1" 
@@ -59,6 +59,7 @@ const CreateMessage = () => {
               placeholder = "Password" 
               onChange={handlePassword1Change} 
               value={password1}
+              autocomplete="off"
             /><br />
             <input 
               className = "password2" 
@@ -67,6 +68,7 @@ const CreateMessage = () => {
               placeholder = "Password" 
               onChange={handlePassword2Change} 
               value={password2}
+              autocomplete="off"
             /><br />
             <input 
               type = "submit" 

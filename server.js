@@ -7,6 +7,7 @@ const mongoose    = require('mongoose')
 const app = express()
 
 app.use(helmet())
+app.use(helmet.noCache())
 app.use(helmet.frameguard({ action: 'sameorigin' }))
 app.use(helmet.dnsPrefetchControl())
 app.use(helmet.referrerPolicy({ policy: 'same-origin' }))

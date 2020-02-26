@@ -5,9 +5,9 @@ const crypto = require('crypto')
 const key = crypto.randomBytes(32)
 const iv = crypto.randomBytes(16)
 
-encrypt = (text) => {
+encrypt = (input) => {
     let cipher = crypto.createCipheriv('aes-256-cbc', Buffer.from(key), iv)
-    let encrypted = cipher.update(text)
+    let encrypted = cipher.update(input)
     encrypted = Buffer.concat([encrypted, cipher.final()])
     return { iv: iv.toString('hex'), encryptedData: encrypted.toString('hex'), key: key}
 }

@@ -1,6 +1,7 @@
 body {
-  background: rgb(59, 12, 59);
+  background: rgb(20, 102, 47);
   color: white;
+  font-family: monospace;
 }
 
 .create {
@@ -40,6 +41,6 @@ input[type=submit] {
 }
 
 input[type=submit]:hover {
-  background-color: #1b2288;
+  background-color: black;
   color: white;
 }

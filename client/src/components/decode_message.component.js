@@ -29,7 +29,6 @@ const DecodeMessage = () => {
     }).then(function(response) {
         return response.json()
     }).then(function(data) {
-        console.log(data)
         setResult(data)
     })
   }
@@ -45,6 +44,7 @@ const DecodeMessage = () => {
               placeholder = "Message" 
               onChange={handleMessageChange} 
               value={message}
+              autocomplete="off"
             /><br />
             <input 
               className = "password" 
@@ -53,6 +53,7 @@ const DecodeMessage = () => {
               placeholder = "Password" 
               onChange={handlePasswordChange} 
               value={password}
+              autocomplete="off"
             /><br />
             <input 
               type = "submit" 
