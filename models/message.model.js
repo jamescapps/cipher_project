@@ -9,7 +9,7 @@ const messageSchema = new Schema (
             key: Object
         }],
         password: String,
-        created_on: {type: Number, default: Date.now()},
+        created_on: { type: Date, expires: 3600, default: Date.now() }
     }
 )
 

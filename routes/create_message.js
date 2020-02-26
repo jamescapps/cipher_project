@@ -27,7 +27,6 @@ router.route('/add').post((req, res) => {
                     key: encryptedMessage.key
                 }],
                 password: password2,
-                created_on: Date.now()
             })
             bcrypt.genSalt(10, (err, salt) => {
                 bcrypt.hash(newMessage.password, salt, (err, hash) => {
