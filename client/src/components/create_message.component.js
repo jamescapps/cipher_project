@@ -1,12 +1,11 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import '../App.css'
-
 
 const CreateMessage = () => {
   const [message, setMessage] = useState('')
   const [password1, setPassword1] = useState('')
   const [password2, setPassword2] = useState('')
-  const [result, setResult] = useState('')
+  const [result, setResult] = useState('Your encrypted message will show here.')
 
   const handleMessageChange = (e) => {
     setMessage(e.target.value)
@@ -22,7 +21,7 @@ const CreateMessage = () => {
 
   const onSubmit =(e) => {
     e.preventDefault()
-    fetch('http://localhost:4000/boards/add', {
+    fetch('http://localhost:4000/create_message/add', {
         method: 'POST',
         headers: {
             Accept: 'application/json',
@@ -39,19 +38,7 @@ const CreateMessage = () => {
         console.log(data)
         setResult(data)
     })
-
-
   }
-
-  useEffect(() => {
-    const getData = async () => {
-        const response = await fetch('http://localhost:4000/boards/test')
-        const body = await response.json()
-        console.log(body)
-    }
-    
-    getData()
-    }, [])
 
       return (
         <div className = "create">
@@ -90,6 +77,5 @@ const CreateMessage = () => {
         </div>
       )
 }
-
 
 export default CreateMessage

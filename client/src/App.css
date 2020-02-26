@@ -1,3 +1,8 @@
+body {
+  background: rgb(59, 12, 59);
+  color: white;
+}
+
 .create {
   text-align: center;
 }
@@ -35,5 +40,6 @@ input[type=submit] {
 }
 
 input[type=submit]:hover {
-  background-color: #45a049;
+  background-color: #1b2288;
+  color: white;
 }

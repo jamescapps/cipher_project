@@ -1,13 +1,10 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import '../App.css'
-
-//Create a new board with password.
-//Threads and replies are in code.
 
 const DecodeMessage = () => {
   const [message, setMessage] = useState('')
   const [password, setPassword] = useState('')
-
+  const [result, setResult] = useState('Your decrypted message will show here.  It will self-destruct after it has been viewed.')
 
   const handleMessageChange = (e) => {
     setMessage(e.target.value)
@@ -19,23 +16,23 @@ const DecodeMessage = () => {
 
   const onSubmit =(e) => {
     e.preventDefault()
-    const thread = {
-      message: message,
-      password: password,
-    }
-    console.log(thread)
-    console.log("Submitted")
+    fetch('http://localhost:4000/decode_message/decode', {
+        method: 'POST',
+        headers: {
+            Accept: 'application/json',
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+            message: message,
+            password: password
+        })
+    }).then(function(response) {
+        return response.json()
+    }).then(function(data) {
+        console.log(data)
+        setResult(data)
+    })
   }
-
-  useEffect(() => {
-    const getData = async () => {
-        const response = await fetch('http://localhost:4000/threads/test')
-        const body = await response.json()
-        console.log(body)
-    }
-    
-    getData()
-    }, [])
 
       return (
         <div className = "create">
@@ -62,9 +59,9 @@ const DecodeMessage = () => {
               value = "Decode" 
             />
           </form>
+          <h3>{result}</h3>
         </div>
       )
 }
-
 
 export default DecodeMessage

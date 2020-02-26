@@ -4,7 +4,6 @@ const bodyParser = require('body-parser')
 const cors = require('cors')
 const helmet      = require('helmet')
 const mongoose    = require('mongoose')
-
 const app = express()
 
 app.use(helmet())
@@ -13,16 +12,15 @@ app.use(helmet.dnsPrefetchControl())
 app.use(helmet.referrerPolicy({ policy: 'same-origin' }))
 app.use(helmet.noSniff())
 app.use(helmet.xssFilter())
+app.use(helmet.hidePoweredBy({ setTo: 'PHP 4.2.0' }))
 app.use(helmet.contentSecurityPolicy({
     directives: {
       defaultSrc: ["'self'"],
       scriptSrc: ["'self'"],
       styleSrc: ["'self'"]
     }
-  }))
-  app.use(helmet.hidePoweredBy({ setTo: 'PHP 4.2.0' }))
-
-
+}))
+  
 app.use(cors());
 app.use(bodyParser.json())
 
@@ -34,14 +32,11 @@ mongoose.connection.once('open', () => {
   console.log("Connected to database!")
 })
 
-const boardRouter = require('./routes/boards')
-const threadRouter = require('./routes/threads')
+const createMessageRouter = require('./routes/create_message')
+const decodeMessageRouter = require('./routes/decode_message')
 
-app.use('/boards', boardRouter)
-app.use('/threads/', threadRouter)
-
-
-
+app.use('/create_message', createMessageRouter)
+app.use('/decode_message', decodeMessageRouter)
 
 app.listen(process.env.PORT, function() {
     console.log("Server is running on Port: " + process.env.PORT)
