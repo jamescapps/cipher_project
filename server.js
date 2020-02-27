@@ -25,6 +25,8 @@ app.use(helmet.contentSecurityPolicy({
 app.use(cors());
 app.use(bodyParser.json())
 
+mongoose.set('useCreateIndex', true)
+
 //mongoose.connect(process.env.MONGODB_URI, { useUnifiedTopology: true, useNewUrlParser: true })
 mongoose.connect('mongodb://localhost/cipher_project', { useUnifiedTopology: true, useNewUrlParser: true }) 
 

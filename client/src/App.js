@@ -6,8 +6,8 @@ import DecodeMessage from './components/decode_message.component'
 
 const App = () => {
   return (
-    <div>
-      <CreateMessage />
+    <div><br /><br />
+      <CreateMessage /><br />
       <DecodeMessage />
     </div>
   )

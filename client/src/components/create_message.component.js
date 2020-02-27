@@ -5,7 +5,7 @@ const CreateMessage = () => {
   const [message, setMessage] = useState('')
   const [password1, setPassword1] = useState('')
   const [password2, setPassword2] = useState('')
-  const [result, setResult] = useState('Your encrypted message will show here.')
+  const [result, setResult] = useState('Your encrypted message will show here.  It will self-destruct after 1 hour.')
 
   const handleMessageChange = (e) => {
     setMessage(e.target.value)
