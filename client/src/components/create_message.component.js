@@ -50,7 +50,7 @@ const CreateMessage = () => {
               placeholder = "Message" 
               onChange={handleMessageChange} 
               value={message}
-              autocomplete="off"
+              autoComplete="off"
             /><br />
             <input 
               className = "password1" 
@@ -59,7 +59,7 @@ const CreateMessage = () => {
               placeholder = "Password" 
               onChange={handlePassword1Change} 
               value={password1}
-              autocomplete="off"
+              autoComplete="off"
             /><br />
             <input 
               className = "password2" 
@@ -68,7 +68,7 @@ const CreateMessage = () => {
               placeholder = "Password" 
               onChange={handlePassword2Change} 
               value={password2}
-              autocomplete="off"
+              autoComplete="off"
             /><br />
             <input 
               type = "submit" 

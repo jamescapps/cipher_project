@@ -9,6 +9,7 @@ const messageSchema = new Schema (
             key: Object
         }],
         password: String,
+        //Either deletes expired message when server starts running or a new message is added...
         created_on: { type: Date, expires: 3600, default: Date.now() }
     }
 )

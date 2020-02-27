@@ -44,7 +44,7 @@ const DecodeMessage = () => {
                 placeholder = "Message" 
                 onChange={handleMessageChange} 
                 value={message}
-                autocomplete="off"
+                autoComplete="off"
               /><br />
               <input 
                 className = "password" 
@@ -53,7 +53,7 @@ const DecodeMessage = () => {
                 placeholder = "Password" 
                 onChange={handlePasswordChange} 
                 value={password}
-                autocomplete="off"
+                autoComplete="off"
               /><br />
               <input 
                 type = "submit" 

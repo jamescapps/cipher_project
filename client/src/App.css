@@ -1,50 +1,41 @@
 body {
-  background: rgb(20, 102, 47);
-  color: black;
+  background: black;
+  color: white;
+}
+
+.create, .decode, .share {
+  text-align: center;
+}
+
+h1, h2 {
+  font-family: 'IBM Plex Sans';
+}
+
+h3 {
   font-family: monospace;
 }
 
-.create, .decode {
-  text-align: center;
-}
-
-h1 {
-  text-align: center;
-}
-
-input[type=text], select {
+input[type=text], select, input[type=password] {
   width: 235px;
   padding: 12px 20px;
   margin: 8px 0;
-  border: 2px solid black;
-  border-radius: 4px;
-  box-sizing: border-box;
-  text-align: center;
-}
-
-input[type=password] {
-  width: 235px;
-  padding: 12px 20px;
-  margin: 8px 0;
-  border: 2px solid black;
-  border-radius: 4px;
+  border: 2px solid blue;
   box-sizing: border-box;
   text-align: center;
 }
 
 input[type=submit] {
-  width: 235px;
+  width: 135px;
   color: black;
   padding: 14px 20px;
   margin: 8px 0;
-  border: 2px solid black;
-  border-radius: 4px;
+  border: 2px solid blue;
   cursor: pointer;
   text-align: center;
   padding-left: 15px;
 }
 
 input[type=submit]:hover {
-  background-color: black;
+  background-color: blue;
   color: white;
 }
