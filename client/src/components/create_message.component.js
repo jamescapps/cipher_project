@@ -32,9 +32,9 @@ const CreateMessage = () => {
             password1: password1,
             password2: password2
         })
-    }).then(function(response) {
+    }).then((response) => {
         return response.json()
-    }).then(function(data) {
+    }).then((data) => {
         setResult(data)
     })
   }

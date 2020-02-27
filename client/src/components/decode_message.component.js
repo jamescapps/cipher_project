@@ -26,9 +26,9 @@ const DecodeMessage = () => {
             message: message,
             password: password
         })
-    }).then(function(response) {
+    }).then((response) => {
         return response.json()
-    }).then(function(data) {
+    }).then((data) => {
         setResult(data)
     })
   }
