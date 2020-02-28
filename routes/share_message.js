@@ -5,19 +5,69 @@ const nodemailer = require('nodemailer')
 router.route('/share').post((req, res) => {
     const { result } = req.body
     const { email } = req.body
+    const  { password2 } = req.body
     const { password3 } = req.body
-
     const emailValidate = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/
-    console.log(result)
-    console.log(email)
-    console.log(password3)
+    const transporter = nodemailer.createTransport({
+        host: `${process.env.HOST}`,
+        port: 465,
+        secure: true, 
+        auth: {
+            user: `${process.env.EMAIL_ADDRESS}`,
+            pass: `${process.env.EMAIL_PASSWORD}` 
+        }
+      })
 
+      console.log(result)
     //Need to make sure passwords match if one is input.
-    
-    if (result !== 'Your encrypted message will show here.  It will self-destruct after 1 hour.') {
+    if (result !== 'Your encrypted message will show here.  It will self-destruct after 1 hour or after it has been viewed.') {
         if (result !== 'Please enter a message.') {
             if (emailValidate.test(email)) {
-                res.json('success')
+                if (password3 === '') {
+                    console.log ('no password sent')
+                    let mailMessage = {
+                        from: '"Cipher" <cipher@jamesjcapps.com>',
+                        to: `${email}`,
+                        subject: 'An encrypted message has been shared with you.',
+                        text:
+                        `You are receiving this email because someone has sent you an encrypted message.\n\n`
+                        + `Please click on the following link and paste your message data in the decode box.\n\n`
+                        + `${result}\n\n`
+                        + `The message will self-destruct in 1 hour or after you have viewed it. \n\n`
+                        + `The password will be sent to you in another form of communication. \n\n`
+                        + `link to be determined\n\n`
+                    }
+                    transporter.sendMail(mailMessage, (err, res) => {
+                        if (err) {
+                            console.error('there was an error: ', err)
+                        } 
+                    })
+                    res.json("Your message has been sent.")
+                } else {
+                    if (password3 === password2) {
+                        console.log('passwords match')
+                        let mailMessage = {
+                            from: '"Cipher" <cipher@jamesjcapps.com>',
+                            to: `${email}`,
+                            subject: 'An encrypted message has been shared with you.',
+                            text:
+                            `You are receiving this email because someone has sent you an encrypted message.\n\n`
+                            + `Please click on the following link and paste your message data in the decode box.\n\n`
+                            + `${result}\n\n` 
+                            + `The message will self-destruct in 1 hour or after you have viewed it. \n\n`
+                            + `The password is ${password3}.\n\n`
+                            + `link to be determined\n\n`
+                        }
+                        transporter.sendMail(mailMessage, (err, res) => {
+                            if (err) {
+                                console.error('there was an error: ', err)
+                            } 
+                        })
+                        res.json("Your message has been sent.")
+                    } else {
+                        res.json('Your passwords do not match.')
+                    }
+                }
             } else {
                 res.json('Please enter a valid email.')
             }

@@ -7,7 +7,7 @@ const CreateMessage = () => {
   const [password1, setPassword1] = useState('')
   const [password2, setPassword2] = useState('')
   const [password3, setPassword3] = useState('')
-  const [result, setResult] = useState('Your encrypted message will show here.  It will self-destruct after 1 hour.')
+  const [result, setResult] = useState('Your encrypted message will show here.  It will self-destruct after 1 hour or after it has been viewed.')
   const [email, setEmail] = useState('')
   const [sendRes, setSendRes] = useState('')
 
@@ -68,6 +68,7 @@ const CreateMessage = () => {
             body: JSON.stringify({
               result: result,
               email: email,
+              password2: password2,
               password3: password3
             })
         }).then((response) => {
@@ -116,7 +117,7 @@ const CreateMessage = () => {
             <h3>{result}</h3>
           </div><br /><br /><br />
           <div className="share">
-              <h2>For added security share encrypted message and password in two seperate forms of communication.</h2>
+            <h2>For added security share encrypted message and password in two seperate forms of communication.</h2>
             <Popup trigger={
               <form onSubmit={onShare}>
                   <input 
@@ -124,50 +125,50 @@ const CreateMessage = () => {
                       value = "Share" 
                   />
               </form>
-            } modal>
-            {close => (
-      <div className="modal">
-        <a className="close" onClick={close}>
-          &times;
-        </a>
-        <div className="header"> Share Encrypted Message </div>
-        <div className="content">
-          {" "}
-          Enter the email address of the person you would like to share this message with.  They will have 1 hour to view it before it self-destructs.
-          <br /><br />
-          <form onSubmit={onSend}>
-              <input 
-                className = "email" 
-                type = "text" 
-                name = "email" 
-                placeholder = "Email" 
-                onChange={handleEmailChange} 
-                value={email}
-                autoComplete="off"
-              /><br />
-              <input 
-                className = "password3" 
-                type = "password" 
-                name = "password3" 
-                placeholder = "Password (not recommended)" 
-                onChange={handleSendPassword} 
-                value={password3}
-                autoComplete="off"
-              /><br />
-              <br />
-              It is advised to share the password in an alternate form of communication so that message and password are not bundled together.<br />
-              <br />
-              {sendRes}
-              <br />
-              <input 
-                type = "submit" 
-                value = "Send" 
-              />
-            </form>
-        </div>
-      </div>
-    )}
-  </Popup>
+              } modal>
+              {close => (
+                <div className="modal">
+                  <a className="close" onClick={close}>
+                    &times;
+                  </a>
+                  <div className="header"> Share Encrypted Message </div>
+                  <div className="content">
+                    {" "}
+                    Enter the email address of the person you would like to share this message with.  They will have 1 hour to view it before it self-destructs.
+                    <br /><br />
+                    <form onSubmit={onSend}>
+                        <input 
+                          className = "email" 
+                          type = "text" 
+                          name = "email" 
+                          placeholder = "Email" 
+                          onChange={handleEmailChange} 
+                          value={email}
+                          autoComplete="off"
+                        /><br />
+                        <input 
+                          className = "password3" 
+                          type = "password" 
+                          name = "password3" 
+                          placeholder = "Password (not recommended)" 
+                          onChange={handleSendPassword} 
+                          value={password3}
+                          autoComplete="off"
+                        /><br />
+                        <br />
+                        It is advised to share the password in an alternate form of communication so that message and password are not bundled together.<br />
+                        <br />
+                        {sendRes}
+                        <br />
+                        <input 
+                          type = "submit" 
+                          value = "Send" 
+                        />
+                      </form>
+                  </div>
+                </div>
+              )}
+            </Popup>
           </div>
         </div>
       )
