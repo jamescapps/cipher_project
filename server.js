@@ -37,9 +37,11 @@ mongoose.connection.once('open', () => {
 
 const createMessageRouter = require('./routes/create_message')
 const decodeMessageRouter = require('./routes/decode_message')
+const shareMessageRouter = require('./routes/share_message')
 
 app.use('/create_message', createMessageRouter)
 app.use('/decode_message', decodeMessageRouter)
+app.use('/share_message', shareMessageRouter)
 
 app.listen(process.env.PORT, function() {
     console.log("Server is running on Port: " + process.env.PORT)
