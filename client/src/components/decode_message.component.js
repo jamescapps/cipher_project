@@ -41,7 +41,7 @@ const DecodeMessage = () => {
                 className = "message" 
                 type = "text" 
                 name = "message" 
-                placeholder = "Message" 
+                placeholder = "Message Data" 
                 onChange={handleMessageChange} 
                 value={message}
                 autoComplete="off"

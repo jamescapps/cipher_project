@@ -57,8 +57,6 @@ const CreateMessage = () => {
 
   const onSend = (e) => {
     e.preventDefault()
-    console.log("Sharing!!")
-    
     fetch('http://localhost:4000/share_message/share', {
             method: 'POST',
             headers: {
@@ -77,6 +75,7 @@ const CreateMessage = () => {
             setSendRes(data)
         })
   }
+  
       return (
         <div>
           <div className = "create">
@@ -115,7 +114,16 @@ const CreateMessage = () => {
               />
             </form>
             <h3>{result}</h3>
-          </div><br /><br /><br />
+          </div><br /><br />
+          <div className="decode">
+            <form target="_blank" action="http://localhost:3000/decode">
+                <input 
+                  type = "submit" 
+                  value = "Decode" 
+                />
+              </form>
+          </div>
+          <br />
           <div className="share">
             <h2>For added security share encrypted message and password in two seperate forms of communication.</h2>
             <Popup trigger={
@@ -128,9 +136,9 @@ const CreateMessage = () => {
               } modal>
               {close => (
                 <div className="modal">
-                  <a className="close" onClick={close}>
+                  <button className="close" onClick={close}>
                     &times;
-                  </a>
+                  </button>
                   <div className="header"> Share Encrypted Message </div>
                   <div className="content">
                     {" "}
@@ -169,6 +177,7 @@ const CreateMessage = () => {
                 </div>
               )}
             </Popup>
+            <br />
           </div>
         </div>
       )
