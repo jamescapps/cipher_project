@@ -32,7 +32,7 @@ router.route('/share').post((req, res) => {
                         + `${result}\n\n`
                         + `The message will self-destruct in 1 hour or after you have viewed it. \n\n`
                         + `The password will be sent to you in another form of communication. \n\n`
-                        + `link to be determined\n\n`
+                        + `https://cipher-project.herokuapp.com/decode\n\n`
                     }
                     transporter.sendMail(mailMessage, (err, res) => {
                         if (err) {
@@ -52,7 +52,7 @@ router.route('/share').post((req, res) => {
                             + `${result}\n\n` 
                             + `The message will self-destruct in 1 hour or after you have viewed it. \n\n`
                             + `The password is ${password3}.\n\n`
-                            + `link to be determined\n\n`
+                            + `https://cipher-project.herokuapp.com/decode\n\n`
                         }
                         transporter.sendMail(mailMessage, (err, res) => {
                             if (err) {
