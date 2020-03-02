@@ -6,7 +6,7 @@ const ThankYou = () => {
         <div className = "outer">
             <div className= "thankyou">
                 <h1>Your message has been sent.</h1>
-                <form action="http://localhost:3000/create">
+                <form action="/create">
                     <input 
                     type = "submit" 
                     value = "Create Another" 

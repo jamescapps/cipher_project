@@ -11,12 +11,14 @@
     "express": "^4.17.1",
     "helmet": "^3.21.3",
     "mongoose": "^5.9.2",
-    "nodemailer": "^6.4.3"
+    "nodemailer": "^6.4.3",
+    "path": "^0.12.7"
   },
   "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js"
+    "start": "node server.js",
+    "heroku-postbuild": "cd client && npm install && npm run build"
   },
   "keywords": [],
   "author": "",

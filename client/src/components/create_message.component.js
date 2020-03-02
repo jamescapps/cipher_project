@@ -25,7 +25,7 @@ const CreateMessage = () => {
 
   const onSubmit =(e) => {
     e.preventDefault()
-    fetch('http://localhost:4000/create_message/add', {
+    fetch('/create_message/add', {
         method: 'POST',
         headers: {
             Accept: 'application/json',
@@ -57,7 +57,7 @@ const CreateMessage = () => {
 
   const onSend = (e) => {
     e.preventDefault()
-    fetch('http://localhost:4000/share_message/share', {
+    fetch('/share_message/share', {
             method: 'POST',
             headers: {
               Accept: 'application/json',
@@ -75,7 +75,7 @@ const CreateMessage = () => {
             setSendRes(data)
             if (data === 'Sending....') {
               setTimeout(function(){
-                window.location.href = 'http://localhost:3000/thankyou'
+                window.location.href = '/thankyou'
               }, 1000)
        
             }
@@ -122,7 +122,7 @@ const CreateMessage = () => {
             <h3>{result}</h3>
           </div><br />
           <div className="decode">
-            <form target="_blank" action="http://localhost:3000/decode">
+            <form target="_blank" action="/decode">
                 <input 
                   type = "submit" 
                   value = "Decode" 

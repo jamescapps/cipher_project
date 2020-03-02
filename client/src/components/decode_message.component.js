@@ -16,7 +16,7 @@ const DecodeMessage = () => {
 
   const onSubmit =(e) => {
     e.preventDefault()
-    fetch('http://localhost:4000/decode_message/decode', {
+    fetch('/decode_message/decode', {
         method: 'POST',
         headers: {
             Accept: 'application/json',

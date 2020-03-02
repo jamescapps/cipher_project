@@ -4,7 +4,9 @@ const bodyParser = require('body-parser')
 const cors = require('cors')
 const helmet      = require('helmet')
 const mongoose    = require('mongoose')
+const path = require('path')
 const app = express()
+const PORT = process.env.port || 4000
 
 app.use(helmet())
 app.use(helmet.noCache())
@@ -35,6 +37,13 @@ mongoose.connection.once('open', () => {
   console.log("Connected to database!")
 })
 
+app.use(express.static(path.join(__dirname, 'build')));
+
+
+app.get('/*', (req, res) => {
+  res.sendFile(path.join(__dirname, 'build', 'index.html'));
+})
+
 const createMessageRouter = require('./routes/create_message')
 const decodeMessageRouter = require('./routes/decode_message')
 const shareMessageRouter = require('./routes/share_message')
@@ -43,6 +52,14 @@ app.use('/create_message', createMessageRouter)
 app.use('/decode_message', decodeMessageRouter)
 app.use('/share_message', shareMessageRouter)
 
-app.listen(process.env.PORT, function() {
-    console.log("Server is running on Port: " + process.env.PORT)
+if (process.env.NODE_ENV === 'production') {
+  app.use(express.static( 'client/build' ))
+
+  app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname, 'client', 'build', 'index.thml'))
+  })
+}
+
+app.listen(PORT, function() {
+    console.log("Server is running on Port: " + PORT)
 })
