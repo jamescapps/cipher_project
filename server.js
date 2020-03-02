@@ -16,13 +16,13 @@ app.use(helmet.referrerPolicy({ policy: 'same-origin' }))
 app.use(helmet.noSniff())
 app.use(helmet.xssFilter())
 app.use(helmet.hidePoweredBy({ setTo: 'PHP 4.2.0' }))
-app.use(helmet.contentSecurityPolicy({
+/*app.use(helmet.contentSecurityPolicy({
     directives: {
       defaultSrc: ["'self'"],
       scriptSrc: ["'self'"],
       styleSrc: ["'self'"]
     }
-}))
+}))*/
   
 app.use(cors());
 app.use(bodyParser.json())
