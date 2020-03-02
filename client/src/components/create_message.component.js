@@ -73,11 +73,17 @@ const CreateMessage = () => {
             return response.json()
         }).then((data) => {
             setSendRes(data)
+            if (data === 'Sending....') {
+              setTimeout(function(){
+                window.location.href = 'http://localhost:3000/thankyou'
+              }, 1000)
+       
+            }
         })
   }
   
       return (
-        <div>
+        <div className="createOuter">
           <div className = "create">
             <h1>Create A New Message</h1>
             <form onSubmit={onSubmit}>
@@ -112,9 +118,9 @@ const CreateMessage = () => {
                 type = "submit" 
                 value = "Create" 
               />
-            </form>
+            </form><br />
             <h3>{result}</h3>
-          </div><br /><br />
+          </div><br />
           <div className="decode">
             <form target="_blank" action="http://localhost:3000/decode">
                 <input 
@@ -125,7 +131,7 @@ const CreateMessage = () => {
           </div>
           <br />
           <div className="share">
-            <h2>For added security share encrypted message and password in two seperate forms of communication.</h2>
+            <h3>For added security share encrypted message and password in two seperate forms of communication.</h3><br />
             <Popup trigger={
               <form onSubmit={onShare}>
                   <input 

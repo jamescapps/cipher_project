@@ -34,33 +34,35 @@ const DecodeMessage = () => {
   }
 
       return (
-        <div className = "decode">
-          <h1>Decode Message</h1>
-            <form onSubmit={onSubmit}>
-              <input 
-                className = "message" 
-                type = "text" 
-                name = "message" 
-                placeholder = "Message Data" 
-                onChange={handleMessageChange} 
-                value={message}
-                autoComplete="off"
-              /><br />
-              <input 
-                className = "password" 
-                type = "password" 
-                name = "password" 
-                placeholder = "Password" 
-                onChange={handlePasswordChange} 
-                value={password}
-                autoComplete="off"
-              /><br />
-              <input 
-                type = "submit" 
-                value = "Decode" 
-              />
-            </form>
-            <h3>{result}</h3>
+        <div className="outer">
+          <div className = "decodePage">
+            <h1>Decode Message</h1>
+              <form onSubmit={onSubmit}>
+                <input 
+                  className = "message" 
+                  type = "text" 
+                  name = "message" 
+                  placeholder = "Message Data" 
+                  onChange={handleMessageChange} 
+                  value={message}
+                  autoComplete="off"
+                /><br />
+                <input 
+                  className = "password" 
+                  type = "password" 
+                  name = "password" 
+                  placeholder = "Password" 
+                  onChange={handlePasswordChange} 
+                  value={password}
+                  autoComplete="off"
+                /><br />
+                <input 
+                  type = "submit" 
+                  value = "Decode" 
+                />
+              </form>
+              <h3>{result}</h3>
+          </div>
         </div>
       )
 }

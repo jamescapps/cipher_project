@@ -1,18 +1,11 @@
 body {
   background: black;
   color: white;
-}
-
-.create, .decode, .share {
   text-align: center;
 }
 
 h1, h2 {
   font-family: 'IBM Plex Sans';
-}
-
-h3 {
-  font-family: monospace;
 }
 
 input[type=text], select, input[type=password] {
@@ -22,6 +15,7 @@ input[type=text], select, input[type=password] {
   border: 2px solid blue;
   box-sizing: border-box;
   text-align: center;
+  font-family: monospace;
 }
 
 input[type=submit] {
@@ -33,6 +27,7 @@ input[type=submit] {
   cursor: pointer;
   text-align: center;
   padding-left: 15px;
+  font-family: monospace;
 }
 
 input[type=submit]:hover {
@@ -76,3 +71,20 @@ input[type=submit]:hover {
   border-radius: 18px;
   border: 1px solid #cfcece;
 }
+
+.outer {
+  position: absolute;
+  top: 50%;
+  margin-top: -200px;
+  width: 100%;
+  text-align: center;
+}
+
+.createOuter {
+  position: absolute;
+  top: 50%;
+  margin-top: -400px;
+  width: 100%;
+  text-align: center;
+}
+
