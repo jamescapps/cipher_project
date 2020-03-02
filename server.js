@@ -37,13 +37,6 @@ mongoose.connection.once('open', () => {
   console.log("Connected to database!")
 })
 
-app.use(express.static(path.join(__dirname, 'build')));
-
-
-app.get('/*', (req, res) => {
-  res.sendFile(path.join(__dirname, 'build', 'index.html'));
-})
-
 const createMessageRouter = require('./routes/create_message')
 const decodeMessageRouter = require('./routes/decode_message')
 const shareMessageRouter = require('./routes/share_message')
