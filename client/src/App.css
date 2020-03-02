@@ -97,7 +97,7 @@ input[type=submit]:hover {
   }
 }
 
-@media screen and (max-width: 400px) {
+@media screen and (max-width: 420px) {
   input[type=text], select, input[type=password] {
     width: 170px;
   }
