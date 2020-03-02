@@ -61,7 +61,15 @@ const DecodeMessage = () => {
                   value = "Decode" 
                 />
               </form>
-              <h3>{result}</h3>
+              <h3>{result}</h3><br />
+              <div className="create">
+                <form action="/create">
+                  <input 
+                    type = "submit" 
+                    value = "Create" 
+                  />
+                </form>
+              </div>
           </div>
         </div>
       )
