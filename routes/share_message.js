@@ -18,13 +18,10 @@ router.route('/share').post((req, res) => {
         }
       })
 
-      console.log(result)
-    //Need to make sure passwords match if one is input.
     if (result !== 'Your encrypted message will show here.  It will self-destruct after 1 hour or after it has been viewed.') {
         if (result !== 'Please enter a message.') {
             if (emailValidate.test(email)) {
                 if (password3 === '') {
-                    console.log ('no password sent')
                     let mailMessage = {
                         from: '"Cipher" <cipher@jamesjcapps.com>',
                         to: `${email}`,
@@ -42,10 +39,9 @@ router.route('/share').post((req, res) => {
                             console.error('there was an error: ', err)
                         } 
                     })
-                    res.json("Your message has been sent.")
+                    res.json("Sending....")
                 } else {
                     if (password3 === password2) {
-                        console.log('passwords match')
                         let mailMessage = {
                             from: '"Cipher" <cipher@jamesjcapps.com>',
                             to: `${email}`,
@@ -63,7 +59,7 @@ router.route('/share').post((req, res) => {
                                 console.error('there was an error: ', err)
                             } 
                         })
-                        res.json("Your message has been sent.")
+                        res.json("Sending....")
                     } else {
                         res.json('Your passwords do not match.')
                     }

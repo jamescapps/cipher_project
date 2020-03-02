@@ -88,3 +88,35 @@ input[type=submit]:hover {
   text-align: center;
 }
 
+@media screen and (max-width: 440px) {
+  input[type=text], select, input[type=password] {
+    width: 200px;
+  }
+  input[type=submit] {
+    width: 100px;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  input[type=text], select, input[type=password] {
+    width: 170px;
+  }
+  input[type=submit] {
+    width: 70;
+  }
+  body {
+    font-size: .75rem;
+  }
+  .modal {
+    font-size: .75rem;
+  }
+}
+
+@media screen and (max-width: 350px) {
+  input[type=text], select, input[type=password] {
+    width: 130px;
+  }
+  input[type=submit] {
+    width: 30;
+  }
+}

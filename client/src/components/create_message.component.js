@@ -164,7 +164,7 @@ const CreateMessage = () => {
                           className = "password3" 
                           type = "password" 
                           name = "password3" 
-                          placeholder = "Password (not recommended)" 
+                          placeholder = "Password (Optional)" 
                           onChange={handleSendPassword} 
                           value={password3}
                           autoComplete="off"
