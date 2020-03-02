@@ -110,6 +110,9 @@ input[type=submit]:hover {
   .modal {
     font-size: .75rem;
   }
+  .createOuter {
+    margin-top: -300px;
+  }
 }
 
 @media screen and (max-width: 350px) {
