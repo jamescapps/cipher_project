@@ -6,7 +6,7 @@ const helmet      = require('helmet')
 const mongoose    = require('mongoose')
 const path = require('path')
 const app = express()
-const PORT = process.env.port || 4000
+const PORT = process.env.PORT || 4000
 
 app.use(helmet())
 app.use(helmet.noCache())
