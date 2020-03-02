@@ -9,7 +9,7 @@ const ThankYou = () => {
                 <form action="/create">
                     <input 
                     type = "submit" 
-                    value = "Create Another" 
+                    value = "Create" 
                     />
                 </form>
             </div>
